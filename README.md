@@ -26,7 +26,7 @@ A full-stack web app where registered users shorten long URLs, manage their link
 
 ![Dashboard](docs/dashboard1.png)
 ![Dashboard extended](docs/dashboard2.png)
-![Link analytics](docs\perlinkanalytics.png)
+![Link analytics](docs/perlinkanalytics.png)
 ![Login Page](docs/login%20page.png)
 
 
