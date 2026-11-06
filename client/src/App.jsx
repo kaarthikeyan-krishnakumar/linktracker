@@ -1,11 +1,28 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 function App() {
     return (
-        <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-            <div className="bg-white rounded-xl shadow p-8 text-center">
-                <h1 className="text-3xl font-bold text-indigo-600">LinkTrack</h1>
-                <p className="mt-2 text-slate-600">React + Tailwind is working.</p>
-            </div>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
