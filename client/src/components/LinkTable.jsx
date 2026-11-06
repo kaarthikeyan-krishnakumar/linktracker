@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LinkTable({ urls, onDelete }) {
     const [copiedId, setCopiedId] = useState(null);
@@ -54,6 +55,11 @@ function LinkTable({ urls, onDelete }) {
                                 {new Date(url.created_at).toLocaleDateString()}
                             </td>
                             <td className="px-4 py-3 whitespace-nowrap">
+                                <Link
+                                        to={`/analytics/${url.id}`}
+                                        className="rounded border border-indigo-300 text-indigo-600 px-2 py-1 mr-2 hover:bg-indigo-50">
+                                        Analytics
+                                </Link>
                                 <button
                                     onClick={() => handleCopy(url)}
                                     className="rounded border border-slate-300 px-2 py-1 mr-2 hover:bg-slate-100"

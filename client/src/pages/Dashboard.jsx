@@ -3,6 +3,7 @@ import { apiRequest } from "../api";
 import Navbar from "../components/Navbar";
 import CreateLinkForm from "../components/CreateLinkForm";
 import LinkTable from "../components/LinkTable";
+import AnalyticsOverview from "../components/AnalyticsOverview";
 
 function Dashboard() {
     const [urls, setUrls] = useState([]);
@@ -44,6 +45,7 @@ function Dashboard() {
             await apiRequest(`/api/urls/${url.id}`, { method: "DELETE" });
             // Remove it from the screen without another API call
             setUrls((current) => current.filter((u) => u.id !== url.id));
+            refresh();
         } catch (err) {
             alert(err.message);
         }
@@ -54,6 +56,7 @@ function Dashboard() {
             <Navbar />
 
             <main className="max-w-5xl mx-auto px-4 py-6 space-y-6">
+                <AnalyticsOverview refreshKey={reloadKey} />
                 <CreateLinkForm onCreated={refresh} />
 
                 <div className="bg-white rounded-xl shadow">
