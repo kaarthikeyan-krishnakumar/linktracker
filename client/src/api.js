@@ -1,4 +1,4 @@
-import { getToken } from "./auth";
+import { getToken, clearAuth } from "./auth";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
@@ -22,6 +22,15 @@ export const apiRequest = async (path, { method = "GET", body } = {}) => {
     }
 
     const data = await response.json().catch(() => ({}));
+
+    // Expired or invalid token: log out and go to the login page.
+    // (Only when a token exists, so a wrong password on the login page
+    // still shows its normal error message.)
+    if (response.status === 401 && token) {
+        clearAuth();
+        window.location.href = "/login";
+        throw new Error("Session expired. Please log in again.");
+    }
 
     if (!response.ok) {
         throw new Error(data.message || "Something went wrong");
