@@ -26,7 +26,7 @@ A full-stack web app where registered users shorten long URLs, manage their link
 
 ![Dashboard](docs/dashboard1.png)
 ![Dashboard extended](docs/dashboard2.png)
-![Link analytics](docs\per-linkanalytics.png)
+![Link analytics](docs\perlinkanalytics.png)
 ![Login Page](docs/login%20page.png)
 
 
@@ -49,8 +49,8 @@ When someone visits a short link, Express looks up the code, records a click eve
 ### 1. Clone and create the database
 
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone https://github.com/kaarthikeyan-krishnakumar/linktracker.git
+cd Link tracker
 ```
 
 Create a PostgreSQL database named `linktrack`, then run the schema:
@@ -119,4 +119,4 @@ Custom aliases, link expiration in the UI, QR codes, CSV export, rate limiting, 
 
 ## Author
 
-<Your name> – <LinkedIn or GitHub link>
+Kaarthikeyan Krishnakumar 
